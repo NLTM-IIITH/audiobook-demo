@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data from db</title>
+
+    <style>
+
+      .button-56 {
+        align-items: center;
+        background-color: #cbeaf9;
+        border: 2px solid #111;
+        border-radius: 8px;
+        box-sizing: border-box;
+        color: #111;
+        cursor: pointer;
+        display: flex;
+        font-family: Comic Sans MS, Comic Sans, cursive;
+        font-size: 16px;
+        height: 48px;
+        justify-content: center;
+        line-height: 24px;
+        max-width: 100%;
+        padding: 0 25px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      
+      .button-56:after {
+        background-color: #111;
+        border-radius: 8px;
+        content: "";
+        display: block;
+        height: 48px;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        top: -2px;
+        transform: translate(8px, 8px);
+        transition: transform .2s ease-out;
+        z-index: -1;
+      }
+      
+      .button-56:hover:after {
+        transform: translate(0, 0);
+      }
+      
+      .button-56:active {
+        background-color: #cbeaf9;
+        outline: 0;
+      }
+      
+      .button-56:hover {
+        outline: 0;
+      }
+      
+      @media (min-width: 768px) {
+        .button-56 {
+          padding: 0 40px;
+        }
+      }
+      .navbar-custom{
+        font-family: Comic Sans MS, Comic Sans, cursive;
+        background-color: #cbeaf9;
+      }
+      .form{
+        margin-left: 40%;
+      }
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      
+</head>
+<body style="font-family:Comic Sans MS, Comic Sans, cursive">
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Audio book demo</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+    <div class="container">
+      <h1>New Conversion</h1>
+      <br>
+      <h3>Takes an image input to return an audio file</h3><br><br>
+      <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        <div class="row" style="font-size:medium">
+        <p style="font-family: Comic Sans MS, Comic Sans, cursive;">Language : {{form.language}}</p><br>
+        <p style="font-family: Comic Sans MS, Comic Sans, cursive;">Add Image  : {{form.cover}}</p><br>
+        <button class="button-56" role="button" type ="submit">submit</button>
+        </div>
+        
+      </form>
+    </div>
+
+</body>
+</html>
