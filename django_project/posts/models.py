@@ -27,9 +27,9 @@ class Post(models.Model):
         default="en",
     )
     # instance_id = models.BigIntegerField(default=0)
-    cover = models.ImageField(upload_to='media/')
+    cover = models.ImageField()
     text_detected = models.TextField(default="default")
-    mp4 = models.FileField(upload_to='media/', null=True)
+    mp4 = models.FileField(null=True)
     # renames the instances of the model
     # with their language
     def __str__(self):
