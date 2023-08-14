@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data from db</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+          }
+          
+          .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            
+          }
+          
+          
+          .row:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+          img {
+            max-width: 80%;
+            max-height: 60%;
+           }
+           .align{
+            margin-right: 50%;
+            margin-left: 35%;
+           }
+           .navbar-custom{
+            font-family: Comic Sans MS, Comic Sans, cursive;
+            background-color: #cbeaf9;
+          }
+           
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      
+</head>
+<body style="font-family:Comic Sans MS, Comic Sans, cursive">
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Audio book demo</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        
+        <br>
+        
+            {% for item in data_from_db %}
+            <p>{{item.title}}</p>
+            <br>
+            <div class="row">
+                <div class="column">
+                    <img src="{{ item.cover.url}}" alt="{{ item.title }}">
+                    <br><br>
+                </div>
+                <div class = "column">
+                    <p>{{ item.text_detected }}</p> 
+                    <br>
+                </div>
+            </div>
+            
+            <div class="align">
+                <audio controls>
+                  {%if item.mp4 %}
+                    <source src="{{ item.mp4.url }}" type="audio/mp3">
+                  {%endif%}
+                  
+                </audio>
+            </div>
+                
+                <br><br>
+                {% endfor %}
+            <p>All the above data has been recorded. Please click 'delete' to erase the recorded data</p>
+            
+            {% for item in data_from_db %}
+            <div>
+                <a href="{% url 'delete_item' item.pk %}">Delete</a>
+            </div>
+{% endfor %}
+              
+        
+      </div>
+    
+</body>
+</html>
