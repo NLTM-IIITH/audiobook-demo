@@ -65,7 +65,7 @@ def detect_text(image,lang,name):
             "modality": "printed",
             "level": "word",
             "language": lang,
-            "version": "tesseract",
+            "version": "v4",
             "modelid": "",
             "omit": True,
             "meta": {}
